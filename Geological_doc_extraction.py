@@ -15,6 +15,9 @@ import cv2
 import pdf2image
 import pathlib
 
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -258,11 +261,11 @@ for sample in os.listdir(path):
     
     # Reverse the order
     occurrences.reverse()
-    print("Top-100 most frequent words")
+    print("Top-50 most frequent words")
     i = 0
     for (w, f) in occurrences:
         i += 1
-        if i > 100:
+        if i > 50:
             break
         print(w,"--->",f)
         
@@ -315,11 +318,11 @@ for sample in os.listdir(path):
     occurrences = sorted(words.countByValue().items(), key=operator.itemgetter(1))
     # Reverse the order
     occurrences.reverse()
-    print("Top-100 most frequent words")
+    print("Top-50 most frequent words")
     i = 0
     for (w, f) in occurrences:
         i += 1
-        if i > 100:
+        if i > 50:
             break
         #print(w, ", ", f)
         
@@ -338,10 +341,37 @@ for sample in os.listdir(path):
     occurrences = sorted(kvwords.countByKey().items(), key=operator.itemgetter(1))
     # Reverse the order
     occurrences.reverse()
-    print("Top-100 most frequent words")
+    
+    word_freq = {}
+    print("Top-15 most frequent words")
     i = 0
     for (w, f) in occurrences:
         i += 1
-        if i > 100:
+        if i > 15:
             break
         print(w, ", ", f)
+        word_freq[w]= f
+    print(word_freq)
+    
+    '''
+    Plotting Frequent Words
+    ''' 
+    
+    cloud = WordCloud(max_font_size=80,colormap="hsv").generate_from_frequencies(word_freq)
+    plt.figure(figsize=(16,12))
+    plt.imshow(cloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
+    
+    os.makedirs("../BDRP_Project/frequent_word_images", exist_ok=True)
+    plt.savefig('frequent_word_images\\cloud_img' + str(i)+'.png')
+    
+    #word_freq.plot(30,title='Frequency distribution for 30 most common tokens in our text collection (excluding stopwords and punctuation)')
+    
+    plt.bar(range(len(word_freq)), list(word_freq.values()), align='center')
+    plt.xticks(range(len(word_freq)), list(word_freq.keys()))
+    plt.rcParams["figure.figsize"] = (20,10)
+    plt.title('Top 15 most frequent words')
+    plt.show()
+    os.makedirs("../BDRP_Project/frequent_word_images", exist_ok=True)
+    plt.savefig('frequent_word_images\\graph_img' + str(i)+'.png')
