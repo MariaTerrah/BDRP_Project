@@ -21,4 +21,6 @@ To run the whole code containing all the above modules , run Geological_doc_extr
 
 
 
+
+
  
