@@ -4,10 +4,14 @@
  
  In order to try the code in a specific document the document should be added to the data folder and path to the document should be updated on the code.
 
-:small_blue_diamond: After creating the dataset the model can be trained and saved using 'MaskClassification.ipynb' on Train_Model folder.
+:small_blue_diamond: .Table_detect.py implements the table detection.
+:small_blue_diamond: .image-preprocessing.py implements the image preprocessing of the pages of documents.
+:small_blue_diamond: .spelling_correction.py implements the text/spelling correction.
+:small_blue_diamond: .Topic_modelling.py implements the topic analysis.
 
 
-:small_blue_diamond: The model trained is loaded to run 'VideoStream.py' (on Use_Model folder) for face mask detection on webcam video stream. 
+
+
 
 
  
