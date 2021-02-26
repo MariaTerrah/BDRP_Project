@@ -2,7 +2,7 @@
  
  This project is an implementation of a system for retrieving textual data from PDF documents. It was built with Tesseract , openCV , TextBlob and Spark.
  
- In order to try the code in a specific document the document should be added to the data folder and path to the document should be updated on the code.
+ In order to run the code in a specific document the document should be added to the data folder and path to the document should be updated on the code.
 
 :small_blue_diamond: Table_detect.py implements the table detection.
 
